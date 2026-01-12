@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Life Expectancy AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen">
+
+    <!-- HEADER -->
+    <header class="px-8 py-6 border-b border-white/10 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-cyan-400">
+            LifeExpectancy<span class="text-white">AI</span>
+        </h1>
+        <a href="/" class="text-gray-300 hover:text-cyan-400">← Back to Home</a>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <main class="px-8 py-10">
+
+        <h2 class="text-3xl font-bold mb-8">📊 Project Dashboard</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+            <div class="bg-white/10 p-6 rounded-2xl">
+                <h3 class="text-lg text-gray-300">Average Life Expectancy</h3>
+                <p class="text-4xl font-bold text-cyan-400 mt-2">~69 Years</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-2xl">
+                <h3 class="text-lg text-gray-300">Countries Analyzed</h3>
+                <p class="text-4xl font-bold text-cyan-400 mt-2">193</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-2xl">
+                <h3 class="text-lg text-gray-300">Model Accuracy (R²)</h3>
+                <p class="text-4xl font-bold text-cyan-400 mt-2">96%</p>
+            </div>
+
+        </div>
+
+        <div class="bg-white/10 p-8 rounded-2xl">
+            <h3 class="text-2xl font-semibold mb-4">📌 Key Insights</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                <li>Higher GDP and schooling strongly increase life expectancy</li>
+                <li>Developed countries show consistently higher lifespan</li>
+                <li>Adult mortality and HIV/AIDS reduce life expectancy significantly</li>
+                <li>XGBoost performed best among all ML models</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- FOOTER WITH AUTHOR -->
+    <footer class="mt-16 border-t border-white/10 py-6 text-center text-gray-400">
+        <p>
+            Built by <span class="text-cyan-400 font-semibold">Zasmin Prajapati</span> |
+            Data Science & ML Intern
+        </p>
+    </footer>
+
+</body>
+</html>
