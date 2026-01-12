@@ -5,86 +5,80 @@
     <title>Life Expectancy AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 1s ease forwards; }
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-black text-white overflow-x-hidden">
 
-    <!-- NAVBAR -->
-    <nav class="flex justify-between items-center px-8 py-6">
-        <h1 class="text-2xl font-bold text-cyan-400">
-            LifeExpectancy<span class="text-white">AI</span>
-        </h1>
-        <div class="space-x-6">
-            <a href="/" class="hover:text-cyan-400">Home</a>
-            <a href="/dashboard" class="hover:text-cyan-400">Dashboard</a>
-            <a href="/predict" class="hover:text-cyan-400">Predict</a>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-10 py-6 backdrop-blur bg-white/5 sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-cyan-400">LifeExpectancy<span class="text-white">AI</span></h1>
+    <div class="space-x-6">
+        <a href="/" class="hover:text-cyan-400 transition">Home</a>
+        <a href="/dashboard" class="hover:text-cyan-400 transition">Dashboard</a>
+        <a href="/predict" class="hover:text-cyan-400 transition">Predict</a>
+    </div>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6">
-        <h2 class="text-5xl md:text-6xl font-extrabold mb-6">
-            AI Powered <span class="text-cyan-400">Life Expectancy</span><br>
-            Analysis & Prediction
-        </h2>
+<!-- HERO -->
+<section class="min-h-[85vh] flex flex-col justify-center items-center text-center px-6">
+    <h2 class="text-5xl md:text-6xl font-extrabold mb-6 fade-up">
+        AI Powered <span class="text-cyan-400">Life Expectancy</span><br>Analysis & Prediction
+    </h2>
 
-        <p class="text-gray-300 max-w-3xl text-lg mb-10">
-            A full-stack machine learning project that analyzes global health,
-            economic and social indicators to predict life expectancy using
-            advanced ML models.
-        </p>
+    <p class="max-w-3xl text-gray-300 text-lg mb-10 fade-up" style="animation-delay:.2s">
+        A full-stack machine learning system that analyzes global health data
+        and predicts life expectancy using modern AI techniques.
+    </p>
 
-        <div class="flex flex-col sm:flex-row gap-5">
-            <a href="/dashboard"
-               class="px-8 py-4 bg-cyan-500 hover:bg-cyan-600 rounded-xl font-semibold transition shadow-lg">
-                📊 View Dashboard
-            </a>
+    <div class="flex gap-6 fade-up" style="animation-delay:.4s">
+        <a href="/dashboard"
+           class="px-8 py-4 bg-cyan-500 hover:bg-cyan-600 rounded-xl font-semibold shadow-xl transition">
+            📊 View Dashboard
+        </a>
 
-            <a href="/predict"
-               class="px-8 py-4 border border-cyan-500 rounded-xl hover:bg-cyan-500 hover:text-black transition shadow-lg">
-                🤖 Predict Life Expectancy
-            </a>
-        </div>
-    </section>
+        <a href="/predict"
+           class="px-8 py-4 border border-cyan-400 rounded-xl hover:bg-cyan-400 hover:text-black transition">
+            🤖 Predict Now
+        </a>
+    </div>
 
-    <!-- FEATURES SECTION -->
-    <section class="max-w-6xl mx-auto px-6 pb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
-            <h3 class="text-xl font-semibold mb-2">📊 Data Analysis</h3>
-            <p class="text-gray-300 text-sm">
-                In-depth exploratory data analysis on WHO life expectancy dataset
-                (2000–2015) with meaningful insights.
-            </p>
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition float">
+            <h3 class="text-xl font-semibold mb-2">📈 Data Analytics</h3>
+            <p class="text-gray-300 text-sm">WHO dataset analysis with strong insights.</p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
+        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition float">
             <h3 class="text-xl font-semibold mb-2">🤖 Machine Learning</h3>
-            <p class="text-gray-300 text-sm">
-                Trained multiple models and finalized XGBoost with ~96% accuracy
-                for life expectancy prediction.
-            </p>
+            <p class="text-gray-300 text-sm">XGBoost model with ~96% accuracy.</p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
-            <h3 class="text-xl font-semibold mb-2">🌍 Real-World Impact</h3>
-            <p class="text-gray-300 text-sm">
-                Helps policymakers and researchers understand how health,
-                education and economy affect lifespan.
-            </p>
+        <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition float">
+            <h3 class="text-xl font-semibold mb-2">🌍 Real Impact</h3>
+            <p class="text-gray-300 text-sm">Useful for policy & health research.</p>
         </div>
+    </div>
+</section>
 
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="text-center text-gray-400 py-6 border-t border-white/10">
-        <p>
-            © 2026 | AI Life Expectancy Project <br>
-            Built by <span class="text-cyan-400 font-semibold">Zasmin Prajapati</span> |
-            Data Science & Machine Learning Intern
-        </p>
-    </footer>
-
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-6 text-center text-gray-400">
+    © 2026 | Built by <span class="text-cyan-400 font-semibold">Zasmin Prajapati</span><br>
+    Data Science & Machine Learning Intern
+</footer>
 
 </body>
 </html>

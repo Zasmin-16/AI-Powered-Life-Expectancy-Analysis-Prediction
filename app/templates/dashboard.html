@@ -4,61 +4,96 @@
     <meta charset="UTF-8">
     <title>Dashboard | Life Expectancy AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide { animation: slideIn 0.9s ease forwards; }
+    </style>
 </head>
 
-<body class="bg-slate-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-black text-white min-h-screen flex flex-col">
 
-    <!-- HEADER -->
-    <header class="px-8 py-6 border-b border-white/10 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-cyan-400">
-            LifeExpectancy<span class="text-white">AI</span>
-        </h1>
-        <a href="/" class="text-gray-300 hover:text-cyan-400">← Back to Home</a>
-    </header>
+<!-- HEADER -->
+<header class="px-10 py-6 border-b border-white/10 flex justify-between items-center backdrop-blur bg-white/5">
+    <h1 class="text-2xl font-bold text-cyan-400">
+        LifeExpectancy<span class="text-white">AI</span>
+    </h1>
+    <a href="/" class="hover:text-cyan-400 transition">Home</a>
+</header>
 
-    <!-- DASHBOARD CONTENT -->
-    <main class="px-8 py-10">
+<!-- MAIN -->
+<main class="px-10 py-10 space-y-12 flex-grow">
 
-        <h2 class="text-3xl font-bold mb-8">📊 Project Dashboard</h2>
+<h2 class="text-3xl font-bold slide">📊 Advanced Analytics Dashboard</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- STATS -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 slide">
+    <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
+        <p class="text-gray-300">Model Accuracy</p>
+        <p class="text-4xl font-bold text-cyan-400">96%</p>
+    </div>
 
-            <div class="bg-white/10 p-6 rounded-2xl">
-                <h3 class="text-lg text-gray-300">Average Life Expectancy</h3>
-                <p class="text-4xl font-bold text-cyan-400 mt-2">~69 Years</p>
-            </div>
+    <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
+        <p class="text-gray-300">Countries</p>
+        <p class="text-4xl font-bold text-cyan-400">193</p>
+    </div>
 
-            <div class="bg-white/10 p-6 rounded-2xl">
-                <h3 class="text-lg text-gray-300">Countries Analyzed</h3>
-                <p class="text-4xl font-bold text-cyan-400 mt-2">193</p>
-            </div>
+    <div class="bg-white/10 backdrop-blur p-6 rounded-2xl hover:scale-105 transition">
+        <p class="text-gray-300">Years Covered</p>
+        <p class="text-4xl font-bold text-cyan-400">2000–2015</p>
+    </div>
+</div>
 
-            <div class="bg-white/10 p-6 rounded-2xl">
-                <h3 class="text-lg text-gray-300">Model Accuracy (R²)</h3>
-                <p class="text-4xl font-bold text-cyan-400 mt-2">96%</p>
-            </div>
+<!-- CHARTS -->
+<div class="bg-white/10 backdrop-blur p-6 rounded-2xl slide">
+    <h3 class="mb-4 font-semibold">📊 Life Expectancy by Status</h3>
+    <canvas id="barChart"></canvas>
+</div>
 
-        </div>
+<div class="bg-white/10 backdrop-blur p-6 rounded-2xl slide">
+    <h3 class="mb-4 font-semibold">📈 Life Expectancy Trend</h3>
+    <canvas id="lineChart"></canvas>
+</div>
 
-        <div class="bg-white/10 p-8 rounded-2xl">
-            <h3 class="text-2xl font-semibold mb-4">📌 Key Insights</h3>
-            <ul class="list-disc list-inside text-gray-300 space-y-2">
-                <li>Higher GDP and schooling strongly increase life expectancy</li>
-                <li>Developed countries show consistently higher lifespan</li>
-                <li>Adult mortality and HIV/AIDS reduce life expectancy significantly</li>
-                <li>XGBoost performed best among all ML models</li>
-            </ul>
-        </div>
+<div class="bg-white/10 backdrop-blur p-6 rounded-2xl slide">
+    <h3 class="mb-4 font-semibold">🌍 GDP vs Life Expectancy</h3>
+    <canvas id="scatterChart"></canvas>
+</div>
 
-    </main>
+</main>
 
-    <!-- FOOTER WITH AUTHOR -->
-    <footer class="mt-16 border-t border-white/10 py-6 text-center text-gray-400">
-        <p>
-            Built by <span class="text-cyan-400 font-semibold">Zasmin Prajapati</span> |
-            Data Science & ML Intern
-        </p>
-    </footer>
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-6 text-center text-gray-400">
+    © 2026 | Built by <span class="text-cyan-400 font-semibold">Zasmin Prajapati</span><br>
+    Data Science & Machine Learning Intern
+</footer>
+
+<!-- CHART SCRIPT -->
+<script>
+const cd = {{ chart_data | tojson }};
+
+new Chart(barChart, {
+    type: 'bar',
+    data: { labels: cd.status_labels, datasets: [{ data: cd.status_values, backgroundColor:'#38bdf8' }] },
+    options: { animation: { duration: 2000 } }
+});
+
+new Chart(lineChart, {
+    type: 'line',
+    data: { labels: cd.year_labels, datasets: [{ data: cd.year_values, borderColor:'#22c55e', tension:.4 }] },
+    options: { animation: { duration: 2500 } }
+});
+
+new Chart(scatterChart, {
+    type: 'scatter',
+    data: { datasets: [{ data: cd.gdp_life.map(v=>({x:v[0],y:v[1]})), backgroundColor:'#facc15' }] },
+    options: { animation: { duration: 3000 } }
+});
+</script>
 
 </body>
 </html>
