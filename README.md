@@ -79,7 +79,7 @@ The dashboard provides multiple animated visualizations:
 ![Home Page](screenshots/home.png)
 
 ### Analytics Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.pn)
 
 ### Prediction Page
 ![Prediction](screenshots/predict.png)
@@ -100,6 +100,3 @@ The dashboard provides multiple animated visualizations:
 | Tools | VS Code, Git, GitHub |
 
 ---
-
-## 📂 Project Structure
-
