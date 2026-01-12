@@ -16,7 +16,7 @@
 ## 👨‍💻 Author
 
 **Zasmin Prajapati**  
-Data Science | Machine Learning Intern  
+Data Science & Machine Learning Intern  
 
 ---
 
@@ -75,13 +75,13 @@ The dashboard provides multiple animated visualizations:
 
 ## 🖥️ Application Screenshots
 
-### Home Page
+### 🏠 Home Page
 ![Home Page](screenshots/home.png)
 
-### Analytics Dashboard
-![Dashboard](screenshots/dashboard.pn)
+### 📊 Analytics Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-### Prediction Page
+### 🔮 Prediction Page
 ![Prediction](screenshots/predict.png)
 
 ---
